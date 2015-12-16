@@ -1,2 +1,0 @@
-+ Default options (activation)
-+ Remove option (deactivation)
