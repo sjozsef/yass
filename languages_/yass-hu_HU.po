@@ -1,0 +1,93 @@
+# Copyright (C) 2015 Yet Another Smooth Scroll
+# This file is distributed under the same license as the Yet Another Smooth Scroll package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Yet Another Smooth Scroll 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/yass\n"
+"POT-Creation-Date: 2015-12-16 19:56+0100\n"
+"PO-Revision-Date: 2015-12-16 19:57+0100\n"
+"Last-Translator: Samu József <sjozsef0227@gmail.com>\n"
+"Language-Team: sjozsef <sjozsef0227@gmail.com>\n"
+"Language: hu_HU\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.1\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: admin/class-yass-admin.php:136
+msgid "Smooth Scroll enabled"
+msgstr "Sima görgetés bekapcsolva"
+
+#: admin/class-yass-admin.php:144
+msgid "Allow keyboard scrolling"
+msgstr "Billentyűzet engedélyezése"
+
+#: admin/class-yass-admin.php:152
+msgid "Allow for touchpad"
+msgstr "Engedélyezés tapipadhoz"
+
+#: admin/class-yass-admin.php:160
+msgid "Animation interval (ms)"
+msgstr "Animáció intervallum"
+
+#: admin/class-yass-admin.php:168
+msgid "Step (px)"
+msgstr "Lépés (pixel)"
+
+#: admin/class-yass-admin.php:176
+msgid "Pulse scale"
+msgstr "Pulse skála"
+
+#: admin/class-yass-admin.php:184
+msgid "Fixed background"
+msgstr "Rögzített háttér"
+
+#: admin/class-yass-admin.php:202
+msgid "Enable or disable SmoothScroll"
+msgstr "Sima görgetés be- és kikapcsolása"
+
+#: admin/class-yass-admin.php:219
+msgid "Allow SmoothScroll for keyboard arrows."
+msgstr "Engedélyezzük a billentyűzet nyilaival történő scrollozáshoz?"
+
+#: admin/class-yass-admin.php:236
+msgid "Enable or disable SmoothScroll for touchpad"
+msgstr "Sima görgetés engedélyezése tapipadon történő scrollozáshoz"
+
+#: admin/class-yass-admin.php:298
+msgid "Enable fixed background image"
+msgstr "Rögzítsük a hátteret?"
+
+#. Plugin Name of the plugin/theme
+#: admin/partials/yass-admin-display.php:2
+msgid "Yet Another Smooth Scroll"
+msgstr "Még egy Sima Görgetés plugin"
+
+#. Plugin URI of the plugin/theme
+msgid "http://sjozsef.com/yass/"
+msgstr "http://sjozsef.com/yass/"
+
+#. Description of the plugin/theme
+msgid "Customisable SmoothScroll plugin for WordPress"
+msgstr "Testreszabható Sima Görgetés (SmoothScroll) bővítmény WordPress -hez."
+
+#. Author of the plugin/theme
+msgid "Samu József"
+msgstr "Samu József"
+
+#. Author URI of the plugin/theme
+msgid "http://sjozsef.com/"
+msgstr "http://sjozsef.com/"
+
+#~ msgid "Allow for touch devices"
+#~ msgstr "Érintőképernyők engedélyezése"
+
+#~ msgid "Enable or disable SmoothScroll for touch devices"
+#~ msgstr "Engedélyezzük érintőképernyős eszközökhoz?"
+
+#~ msgid "yass.sjozsef.com"
+#~ msgstr "yass.sjozsef.com/hu/"
+
+#~ msgid "Highly customisable smooth scroll plugin for WordPress"
+#~ msgstr "Testreszabható bővítmény sima görgetéshez (smooth scroll)"
