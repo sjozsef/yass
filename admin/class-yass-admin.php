@@ -75,7 +75,7 @@ class Yass_Admin {
 		 
 		if($hook == 'settings_page_yet_another_smooth_scroll')
 		{
-			wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/yass-admin.css', array(), $this->version, 'all' );
+			wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/yass-admin'. ( WP_DEBUG ? '' : '.min' ) .'.css', array(), $this->version, 'all' );
 		}
 	}
 
@@ -100,7 +100,7 @@ class Yass_Admin {
 
 		if($hook == 'settings_page_yet_another_smooth_scroll')
 		{
-			wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/yass-admin.js', array( 'jquery' ), $this->version, true );
+			wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/yass-admin'. ( WP_DEBUG ? '' : '.min' ) .'.js', array( 'jquery' ), $this->version, true );
 		}
 	}
 	

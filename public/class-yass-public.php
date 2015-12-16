@@ -95,8 +95,8 @@ class Yass_Public {
 		 * between the defined hooks and the functions defined in this
 		 * class.
 		 */
-
-		wp_register_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/yass-public.js', array( 'jquery' ), $this->version, true );
+		
+		wp_register_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/yass-public'. ( WP_DEBUG ? '' : '.min' ) .'.js', array( 'jquery' ), $this->version, true );
 		
 		$opts = get_option( 'YASS_settings' );
 		
