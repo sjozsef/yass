@@ -36,6 +36,10 @@ Credits:
 1. Use the Settings->YASS screen to configure the plugin
 1. Enjoy the smoothest scroll you ever seen ;)
 
+== Screenshots ==
+
+1. Admin settings screen
+
 == Changelog ==
 
 = 1.0 =
