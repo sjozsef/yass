@@ -198,7 +198,7 @@ class Yass_Admin {
 		$options = get_option( 'YASS_settings' );
 		?>
 		<label>
-		<input type='checkbox' name='YASS_settings[YASS_enabled]' <?php checked( $options['YASS_enabled'], 1 ); ?> value='1'>
+		<input type='checkbox' name='YASS_settings[YASS_enabled]' <?php checked( isset($options['YASS_enabled']) ? $options['YASS_enabled'] : 0, 1 ); ?> value='1'>
 		<?php _e('Enable or disable SmoothScroll', 'yass'); ?>
 		</label>
 		<?php
@@ -215,7 +215,7 @@ class Yass_Admin {
 		$options = get_option( 'YASS_settings' );
 		?>
 		<label>
-		<input type='checkbox' name='YASS_settings[YASS_keyboard]' <?php checked( $options['YASS_keyboard'], 1 ); ?> value='1'>
+		<input type='checkbox' name='YASS_settings[YASS_keyboard]' <?php checked( isset($options['YASS_keyboard']) ? $options['YASS_keyboard'] : 0, 1 ); ?> value='1'>
 		<?php _e('Allow SmoothScroll for keyboard arrows.', 'yass'); ?>
 		</label>
 		<?php
@@ -232,7 +232,7 @@ class Yass_Admin {
 		$options = get_option( 'YASS_settings' );
 		?>
 		<label>
-		<input type='checkbox' name='YASS_settings[YASS_touch]' <?php checked( $options['YASS_touch'], 1 ); ?> value='1'>
+		<input type='checkbox' name='YASS_settings[YASS_touch]' <?php checked( isset($options['YASS_touch']) ? $options['YASS_touch'] : 0, 1 ); ?> value='1'>
 		<?php _e('Enable or disable SmoothScroll for touchpad', 'yass'); ?>
 		</label>
 		<?php
@@ -249,7 +249,7 @@ class Yass_Admin {
 		$options = get_option( 'YASS_settings' );
 		?>
 		<input data-slider="true" data-slider-theme="volume" data-slider-range="100,1000" data-slider-step="100"
-		type='text' name='YASS_settings[YASS_anim_interval]' value='<?php echo $options['YASS_anim_interval']; ?>'>
+		type='text' name='YASS_settings[YASS_anim_interval]' value='<?php if(isset($options['YASS_anim_interval'])) echo $options['YASS_anim_interval']; ?>'>
 		<?php
 	
 	}
@@ -264,7 +264,7 @@ class Yass_Admin {
 		$options = get_option( 'YASS_settings' );
 		?>
 		<input data-slider="true" data-slider-theme="volume" data-slider-range="50,200" data-slider-step="15"
-		type='text' name='YASS_settings[YASS_step]' value='<?php echo $options['YASS_step']; ?>'>
+		type='text' name='YASS_settings[YASS_step]' value='<?php if(isset($options['YASS_anim_interval'])) echo $options['YASS_step']; ?>'>
 		<?php
 	
 	}
@@ -279,7 +279,7 @@ class Yass_Admin {
 		$options = get_option( 'YASS_settings' );
 		?>
 		<input data-slider="true" data-slider-theme="volume" data-slider-range="0,10" data-slider-step="1"
-		type='text' name='YASS_settings[YASS_pulse]' value='<?php echo $options['YASS_pulse']; ?>'>
+		type='text' name='YASS_settings[YASS_pulse]' value='<?php if(isset($options['YASS_anim_interval'])) echo $options['YASS_pulse']; ?>'>
 		<?php
 	
 	}
@@ -294,7 +294,7 @@ class Yass_Admin {
 		$options = get_option( 'YASS_settings' );
 		?>
 		<label>
-		<input type='checkbox' name='YASS_settings[YASS_fixed_bg]' <?php checked( $options['YASS_fixed_bg'], 1 ); ?> value='1'>
+		<input type='checkbox' name='YASS_settings[YASS_fixed_bg]' <?php checked( isset($options['YASS_fixed_bg']) ? $options['YASS_fixed_bg'] : 0, 1 ); ?> value='1'>
 		<?php _e('Enable fixed background image', 'yass'); ?>
 		</label>
 		<?php
