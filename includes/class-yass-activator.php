@@ -30,7 +30,14 @@ class Yass_Activator {
 	 * @since    1.0.0
 	 */
 	public static function activate() {
-
+		$defaults = array(
+			"YASS_enabled"			=>  	1,
+			"YASS_keyboard"			=>  	1,
+			"YASS_anim_interval"	=> 		400,
+			"YASS_step"				=>		100,
+			"YASS_pulse"			=>		4
+		);
+		update_option('YASS_settings', $defaults);
 	}
 
 }
