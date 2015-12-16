@@ -33,6 +33,8 @@ class Yass_Activator {
 		$defaults = array(
 			"YASS_enabled"			=>  	1,
 			"YASS_keyboard"			=>  	1,
+			"YASS_touch"			=> 		0,
+			"YASS_fixed_bg"			=>		0,
 			"YASS_anim_interval"	=> 		400,
 			"YASS_step"				=>		100,
 			"YASS_pulse"			=>		4
