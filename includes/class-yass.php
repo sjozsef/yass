@@ -69,7 +69,7 @@ class Yass {
 	public function __construct() {
 
 		$this->plugin_name = 'yass';
-		$this->version = '1.0.0';
+		$this->version = '1.1.0';
 
 		$this->load_dependencies();
 		$this->set_locale();

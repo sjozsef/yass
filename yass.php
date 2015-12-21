@@ -16,7 +16,7 @@
  * Plugin Name:       Yet Another Smooth Scroll
  * Plugin URI:        http://sjozsef.com/yass/
  * Description:       Customisable SmoothScroll plugin for WordPress
- * Version:           1.0.0
+ * Version:           1.1.0
  * Author:            Samu József
  * Author URI:        http://sjozsef.com/
  * License:           GPL-2.0+
