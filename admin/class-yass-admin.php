@@ -72,7 +72,7 @@ class Yass_Admin {
 		 * between the defined hooks and the functions defined in this
 		 * class.
 		 */
-		 
+
 		if($hook == 'settings_page_yet_another_smooth_scroll')
 		{
 			wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/yass-admin'. ( WP_DEBUG ? '' : '.min' ) .'.css', array(), $this->version, 'all' );
@@ -103,132 +103,148 @@ class Yass_Admin {
 			wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/yass-admin'. ( WP_DEBUG ? '' : '.min' ) .'.js', array( 'jquery' ), $this->version, true );
 		}
 	}
-	
+
 	/**
 	 * Adding admin menu
 	 *
 	 * @since    1.0.0
 	 */
-	public function add_admin_menu() { 
+	public function add_admin_menu() {
 
 		add_options_page( 'Yet Another Smooth Scroll', 'YASS', 'manage_options', 'yet_another_smooth_scroll', array($this, 'options_page') );
-	
+
 	}
-	
+
 	/**
 	 * Init settings
 	 *
 	 * @since    1.0.0
 	 */
-	public function settings_init(  ) { 
+	public function settings_init(  ) {
 
 		register_setting( 'YASS_Settings', 'YASS_settings' );
-	
+
 		add_settings_section(
-			'YASS_pluginPage_section', 
-			'', //__( 'Settings', 'yass' ), 
-			array($this, 'settings_section_callback'), 
+			'YASS_pluginPage_section',
+			'', //__( 'Settings', 'yass' ),
+			array($this, 'settings_section_callback'),
 			'YASS_Settings'
 		);
-	
-		add_settings_field( 
-			'YASS_enabled', 
-			__( 'Smooth Scroll enabled', 'yass' ), 
-			array($this, 'enabled_render'), 
-			'YASS_Settings', 
-			'YASS_pluginPage_section' 
+
+		add_settings_field(
+			'YASS_enabled',
+			__( 'Allowed for mouse wheel', 'yass' ),
+			array($this, 'enabled_render'),
+			'YASS_Settings',
+			'YASS_pluginPage_section'
 		);
-	
-		add_settings_field( 
-			'YASS_keyboard', 
-			__( 'Allow keyboard scrolling', 'yass' ), 
-			array($this, 'keyboard_render'), 
-			'YASS_Settings', 
-			'YASS_pluginPage_section' 
+
+		add_settings_field(
+			'YASS_keyboard',
+			__( 'Allowed for keyboard', 'yass' ),
+			array($this, 'keyboard_render'),
+			'YASS_Settings',
+			'YASS_pluginPage_section'
 		);
-	
-		add_settings_field( 
-			'YASS_touch', 
-			__( 'Allow for touchpad', 'yass' ), 
-			array($this, 'touch_render'), 
-			'YASS_Settings', 
-			'YASS_pluginPage_section' 
+
+		add_settings_field(
+			'YASS_touch',
+			__( 'Allowed for touchpad', 'yass' ),
+			array($this, 'touch_render'),
+			'YASS_Settings',
+			'YASS_pluginPage_section'
 		);
-	
-		add_settings_field( 
-			'YASS_anim_interval', 
-			__( 'Animation interval (ms)', 'yass' ), 
-			array($this, 'anim_interval_render'), 
-			'YASS_Settings', 
-			'YASS_pluginPage_section' 
+
+		add_settings_field(
+			'YASS_anim_interval',
+			__( 'Animation interval (ms)', 'yass' ),
+			array($this, 'anim_interval_render'),
+			'YASS_Settings',
+			'YASS_pluginPage_section'
 		);
-	
-		add_settings_field( 
-			'YASS_step', 
-			__( 'Step (px)', 'yass' ), 
-			array($this, 'step_render'), 
-			'YASS_Settings', 
-			'YASS_pluginPage_section' 
+
+		add_settings_field(
+			'YASS_step',
+			__( 'Step (px)', 'yass' ),
+			array($this, 'step_render'),
+			'YASS_Settings',
+			'YASS_pluginPage_section'
 		);
-	
-		add_settings_field( 
-			'YASS_pulse', 
-			__( 'Pulse scale', 'yass' ), 
-			array($this, 'pulse_render'), 
-			'YASS_Settings', 
-			'YASS_pluginPage_section' 
+
+		add_settings_field(
+			'YASS_acceleration_delta',
+			__( 'Acceleration delta', 'yass' ),
+			array($this, 'acceleration_delta_render'),
+			'YASS_Settings',
+			'YASS_pluginPage_section'
 		);
-	
-		add_settings_field( 
-			'YASS_fixed_bg', 
-			__( 'Fixed background', 'yass' ), 
-			array($this, 'fixed_bg_render'), 
-			'YASS_Settings', 
-			'YASS_pluginPage_section' 
+
+		add_settings_field(
+			'YASS_acceleration_max',
+			__( 'Acceleration max', 'yass' ),
+			array($this, 'acceleration_max_render'),
+			'YASS_Settings',
+			'YASS_pluginPage_section'
+		);
+
+		add_settings_field(
+			'YASS_pulse',
+			__( 'Pulse scale', 'yass' ),
+			array($this, 'pulse_render'),
+			'YASS_Settings',
+			'YASS_pluginPage_section'
+		);
+
+		add_settings_field(
+			'YASS_fixed_bg',
+			__( 'Fixed background', 'yass' ),
+			array($this, 'fixed_bg_render'),
+			'YASS_Settings',
+			'YASS_pluginPage_section'
 		);
 	}
-	
+
 	/**
 	 * Renders the 'enabled' option field
 	 *
 	 * @since    1.0.0
 	 */
-	function enabled_render(  ) { 
+	function enabled_render(  ) {
 
 		$options = get_option( 'YASS_settings' );
 		?>
 		<label>
 		<input type='checkbox' name='YASS_settings[YASS_enabled]' <?php checked( isset($options['YASS_enabled']) ? $options['YASS_enabled'] : 0, 1 ); ?> value='1'>
-		<?php _e('Enable or disable SmoothScroll', 'yass'); ?>
+		<?php _e('Enable or disable  SmoothScroll for mouse wheel', 'yass'); ?>
 		</label>
 		<?php
-	
+
 	}
-	
+
 	/**
 	 * Renders the 'keyboard' option field
 	 *
 	 * @since    1.0.0
 	 */
-	function keyboard_render(  ) { 
-	
+	function keyboard_render(  ) {
+
 		$options = get_option( 'YASS_settings' );
 		?>
 		<label>
 		<input type='checkbox' name='YASS_settings[YASS_keyboard]' <?php checked( isset($options['YASS_keyboard']) ? $options['YASS_keyboard'] : 0, 1 ); ?> value='1'>
-		<?php _e('Allow SmoothScroll for keyboard arrows.', 'yass'); ?>
+		<?php _e('Enable or disable  SmoothScroll for keyboard arrows.', 'yass'); ?>
 		</label>
 		<?php
-	
+
 	}
-	
+
 	/**
 	 * Renders the 'touch' option field
 	 *
 	 * @since    1.0.0
 	 */
-	function touch_render(  ) { 
-	
+	function touch_render(  ) {
+
 		$options = get_option( 'YASS_settings' );
 		?>
 		<label>
@@ -236,61 +252,91 @@ class Yass_Admin {
 		<?php _e('Enable or disable SmoothScroll for touchpad', 'yass'); ?>
 		</label>
 		<?php
-	
+
 	}
-	
+
 	/**
 	 * Renders the 'anim_interval' option field
 	 *
 	 * @since    1.0.0
 	 */
-	function anim_interval_render(  ) { 
+	function anim_interval_render(  ) {
 
 		$options = get_option( 'YASS_settings' );
 		?>
 		<input data-slider="true" data-slider-theme="volume" data-slider-range="100,1000" data-slider-step="100"
 		type='text' name='YASS_settings[YASS_anim_interval]' value='<?php if(isset($options['YASS_anim_interval'])) echo $options['YASS_anim_interval']; ?>'>
 		<?php
-	
+
 	}
-	
+
 	/**
 	 * Renders the 'step' option field
 	 *
 	 * @since    1.0.0
 	 */
-	function step_render(  ) { 
-	
+	function step_render(  ) {
+
 		$options = get_option( 'YASS_settings' );
 		?>
 		<input data-slider="true" data-slider-theme="volume" data-slider-range="50,200" data-slider-step="15"
-		type='text' name='YASS_settings[YASS_step]' value='<?php if(isset($options['YASS_anim_interval'])) echo $options['YASS_step']; ?>'>
+		type='text' name='YASS_settings[YASS_step]' value='<?php if(isset($options['YASS_step'])) echo $options['YASS_step']; ?>'>
 		<?php
-	
+
 	}
-	
+
+	/**
+	 * Renders the 'acceleration delta' option field
+	 *
+	 * @since    1.0.0
+	 */
+	function acceleration_delta_render(  ) {
+
+		$options = get_option( 'YASS_settings' );
+		?>
+		<input data-slider="true" data-slider-theme="volume" data-slider-range="10,100" data-slider-step="10"
+		type='text' name='YASS_settings[YASS_acceleration_delta]' value='<?php if(isset($options['YASS_acceleration_delta'])) echo $options['YASS_acceleration_delta']; ?>'>
+		<?php
+
+	}
+
+	/**
+	 * Renders the 'acceleration max' option field
+	 *
+	 * @since    1.0.0
+	 */
+	function acceleration_max_render(  ) {
+
+		$options = get_option( 'YASS_settings' );
+		?>
+		<input data-slider="true" data-slider-theme="volume" data-slider-range="1,10" data-slider-step="1"
+		type='text' name='YASS_settings[YASS_acceleration_max]' value='<?php if(isset($options['YASS_acceleration_max'])) echo $options['YASS_acceleration_max']; ?>'>
+		<?php
+
+	}
+
 	/**
 	 * Renders the 'pulse' option field
 	 *
 	 * @since    1.0.0
 	 */
-	function pulse_render(  ) { 
-	
+	function pulse_render(  ) {
+
 		$options = get_option( 'YASS_settings' );
 		?>
 		<input data-slider="true" data-slider-theme="volume" data-slider-range="0,10" data-slider-step="1"
 		type='text' name='YASS_settings[YASS_pulse]' value='<?php if(isset($options['YASS_anim_interval'])) echo $options['YASS_pulse']; ?>'>
 		<?php
-	
+
 	}
-	
+
 	/**
 	 * Renders the 'fiexed_bg' option field
 	 *
 	 * @since    1.0.0
 	 */
-	function fixed_bg_render(  ) { 
-	
+	function fixed_bg_render(  ) {
+
 		$options = get_option( 'YASS_settings' );
 		?>
 		<label>
@@ -298,29 +344,29 @@ class Yass_Admin {
 		<?php _e('Enable fixed background image', 'yass'); ?>
 		</label>
 		<?php
-	
+
 	}
-	
+
 	/**
 	 * Callback for settings section (does nothing yet)
 	 *
 	 * @since    1.0.0
 	 */
-	public function settings_section_callback(  ) { 
+	public function settings_section_callback(  ) {
 
 		//echo __( '', 'yass' );
-	
+
 	}
-	
+
 	/**
 	 * Loads the template file for rendering the option page
 	 *
 	 * @since    1.0.0
 	 */
-	public function options_page(  ) { 
+	public function options_page(  ) {
 
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/partials/yass-admin-display.php';
-	
+
 	}
 
 }

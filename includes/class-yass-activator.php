@@ -37,6 +37,8 @@ class Yass_Activator {
 			"YASS_fixed_bg"			=>		0,
 			"YASS_anim_interval"	=> 		400,
 			"YASS_step"				=>		100,
+			"YASS_acceleration_delta"				=>		50,
+			"YASS_acceleration_max"				=>		3,
 			"YASS_pulse"			=>		4
 		);
 		update_option('YASS_settings', $defaults);
